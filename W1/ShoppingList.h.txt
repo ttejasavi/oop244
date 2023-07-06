@@ -1,0 +1,21 @@
+#ifndef NAMESPACESDDS_SHOPPINGLIST_H // replace with relevant names
+#define NAMESPACESDDS_SHOPPINGLIST_H
+#include "ShoppingRec.h"
+using namespace std;
+namespace sdds {
+	
+	bool loadList();
+	void displayList();
+	void removeBoughtItems();
+	void removeItem(int index);
+	bool saveList();
+	void clearList();
+	void toggleBought();
+	void addItemToList();
+	void removeItemfromList();
+	bool listIsEmpty();
+	const int MAX_NO_OF_RECS = 15;
+
+}
+// Your header file content goes here
+#endif
