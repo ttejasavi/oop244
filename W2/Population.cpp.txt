@@ -1,0 +1,99 @@
+#include "Population.h"
+#include "File.h"
+#include <iostream>
+#include <cstring>
+
+namespace sdds {
+    Population::Population()
+        : postalCodes(nullptr), populations(nullptr), count(0)
+    {
+    }
+
+    Population::~Population()
+    {
+        deallocateMemory();
+    }
+
+    bool Population::load(const char* filename)
+    {
+        std::ifstream file;
+        if (!openFile(filename, file))
+        {
+            std::cout << "Could not open data file: " << filename << std::endl;
+            return false;
+        }
+
+        char postalCode[POSTAL_CODE_SIZE];
+        int population;
+
+        while (readPostalCode(file, postalCode) && readPopulation(file, population))
+        {
+            addRecord(postalCode, population);
+        }
+
+        if (!file.eof())
+        {
+            std::cout << "Error: incorrect number of records read; the data is possibly corrupted!" << std::endl;
+            return false;
+        }
+
+        file.close();
+        return true;
+    }
+
+    void Population::addRecord(const char* postalCode, int population)
+    {
+        char* newPostalCodes = new char[(count + 1) * POSTAL_CODE_SIZE];
+        int* newPopulations = new int[count + 1];
+
+        for (int i = 0; i < count; i++)
+        {
+            std::memcpy(newPostalCodes + i * POSTAL_CODE_SIZE, postalCodes + i * POSTAL_CODE_SIZE, POSTAL_CODE_SIZE);
+            newPopulations[i] = populations[i];
+        }
+
+        std::memcpy(newPostalCodes + count * POSTAL_CODE_SIZE, postalCode, POSTAL_CODE_SIZE);
+        newPopulations[count] = population;
+
+        deallocateMemory();
+
+        postalCodes = newPostalCodes;
+        populations = newPopulations;
+        count++;
+    }
+
+    void Population::display() const
+    {
+        std::cout << "Postal Code: population" << std::endl;
+        std::cout << "-------------------------" << std::endl;
+
+        for (int i = 0; i < count; i++)
+        {
+            std::cout << i + 1 << "- " << postalCodes + i * POSTAL_CODE_SIZE << ":  " << populations[i] << std::endl;
+        }
+
+        std::cout << "-------------------------" << std::endl;
+        std::cout << "Population of Canada: " << calculateTotalPopulation() << std::endl;
+    }
+
+    int Population::calculateTotalPopulation() const
+    {
+        int total = 0;
+
+        for (int i = 0; i < count; i++)
+        {
+            total += populations[i];
+        }
+
+        return total;
+    }
+
+    void Population::deallocateMemory()
+    {
+        delete[] postalCodes;
+        delete[] populations;
+        postalCodes = nullptr;
+        populations = nullptr;
+        count = 0;
+    }
+}
