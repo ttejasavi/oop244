@@ -1,0 +1,50 @@
+// Workshop 3 part 2
+//Name : Tejasavi
+//Seneca ID : 174401216
+//Seneca email : ttejasavi@myseneca.ca
+//Date : 2023/06/05
+
+
+#ifndef NAMESPACESDDS_CALORIELIST_H_
+#define NAMESPACESDDS_CALORIELIST_H_
+
+#include "Food.h"
+
+namespace sdds
+
+{
+
+    class CalorieList
+
+    {
+
+        Food* foods;
+        char m_title[37];
+        int m_noOfFood;
+        int m_foodAdded;
+        int totalCalorie()const;
+        void Title()const;
+        void footer()const;
+        void setEmpty();
+        bool isValid()const;
+
+
+    public:  
+
+       
+       
+        void init(int size);
+       
+        bool add(const char* item_name, int calories, int when);
+        
+        void display()const;
+       
+        void deallocate();
+
+
+    };
+  
+
+}
+
+#endif

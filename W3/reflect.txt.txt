@@ -1,0 +1,35 @@
+Name- Tejasavi
+Student number- 174401216
+Student ID- ttejasavi@myseneca.ca
+Date- 2023/06/05
+In this lab, I learnt about defining class type. The keyword class identifies a class that is private by default.
+
+A class keyword is the common keyword in OOP which is common as the struct. Any attempt by the client code to access a private member generates a compiler error.
+
+MODIFYING PRIVATE DATA :
+
+1.If the data members of a class are private, client code cannot initialize their values directly. We use a separate member functionfor this specific task.
+
+2.To prohibit external access to any member, we insert the label private into the definition of class:
+            
+                        private:
+
+It identifies all subsequent members listed in the class definition as inaccessible.
+
+3. To enable external access, we can insert class:
+
+                        public:
+public identifies all subsequent members listed in the class definition as accessible.
+
+4. Each object or instance of a class occupies its own region of memory. The data for the object is stored in that region of memory.
+
+Definition of class
+                   Type Identifier;
+Type is the name of class and identifier is the name of the object.
+
+CLASS PRIVACY:
+
+C++ compilers apply privacy at the class level. Any member function can access any private member of its class, including any data member of any instance of its class. In other words 
+privacy is not implemented at the individual object level.
+
+I learnt all about private and public member functions from this workshop and accessing private members in a class.  

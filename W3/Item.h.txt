@@ -1,0 +1,23 @@
+//Name - Tejasavi
+//Email- ttejasavi@myseneca.ca
+//Student number- 174401216
+//Class- NGG
+#ifndef SDDS_ITEM_H_
+#define SDDS_ITEM_H_
+namespace sdds {
+    class Item {
+        char m_itemName[21];// holds the item name up to 20 chars
+        double m_price;
+        bool m_taxed;
+        void setName(const char* name);//This function sets the itemName member Cstring variable to a the Cstring in the name argument up to 20 characters.
+    public:
+        void setEmpty();
+        void set(const char* name, double price, bool taxed);
+        void display()const;
+        bool isValid()const;
+        double price()const;
+        double tax()const;
+    };
+}
+
+#endif // !SDDS_SUBJECT_H
