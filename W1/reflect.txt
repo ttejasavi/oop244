@@ -1,1 +1,5 @@
+Name - Tejasavi
+Student number- 174401216
 
+Reflection:-
+In my first workshop of OOP-244, I learnt about modular programming that how different modules can be made out of a single code by adding implementation and header files. In this workshop the concept of modular programming is taught in c++ language which is a function of this language. I learnt about adding namespaces in this workshop which was main thing. Adding namespaces and using it in implementation file was the objective of this workshop. I really learnt about basic concept of this language and I hope that next learning will be more interesting as completing this workshop was really enjoying and fun!!!.
